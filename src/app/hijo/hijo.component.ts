@@ -1,28 +1,25 @@
 import { Component,Output,EventEmitter,Input } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-hijo',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule,ReactiveFormsModule],
   templateUrl: './hijo.component.html',
   styleUrl: './hijo.component.css'
 })
 export class HijoComponent {
-    @Output() enviardatos = new EventEmitter<string>();
-    @Output() info = new EventEmitter<any>();
-    @Input() recibirpadre?:string = ''
-    envio='';
-    enviar = '';
-    otro:any = {};
-    enviarinfo(){
-      this.enviardatos.emit(this.envio); 
-      this.enviardatos.emit(this.enviar);
-    }
-    nuevo(){
-      this.enviarinfo();
-    }
+  @Input() validarpadre?:any;
+  @Output() validarhijo = new EventEmitter<string>();
 
 
+
+      age:any = new FormControl('')
+
+
+  
+  agregar(){
+    this.validarhijo.emit(this.age);
+  }
 
 }

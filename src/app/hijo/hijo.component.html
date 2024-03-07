@@ -1,10 +1,11 @@
 
-<input type="text" placeholder="escriba" [(ngModel)]="envio" >
-<input type="text" placeholder="escriba" [(ngModel)]="enviar" >
-{{enviar}}
-{{envio}}
-{{recibirpadre}}
+<h1>COMPONENTE HIJO</h1>
 
-<button (click)="nuevo()">agregar</button>
-
-
+<form >
+    <input type="text"  placeholder="escribamos" [formControl]="age"  >
+    <button (click)="agregar()" >enviar</button>
+</form>
+{{age.value}}
+<div>
+    <p> {{validarpadre}} </p>
+</div>

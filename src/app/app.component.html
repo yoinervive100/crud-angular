@@ -1,28 +1,15 @@
 
 <h1>crud de angular</h1>
 
-<table>
-    <thead>
-        <tr>
-            <th>nombre</th>
-            <th>otro</th>
-            <th>mofificar</th>
-            <th>eliminar</th>
-        </tr>
-    </thead>
-    <tbody>
-        @for (item of dts; track item.lenght){
-            <tr>
-                <td >{{item}} </td>
-                <td>actualizar</td>
-                <td><button (click)="eliminar()" >eliminar</button></td>
-            </tr>
-        }
-    </tbody>
-</table>
 
-
-<app-hijo  [recibirpadre]="" (enviardatos)="traerinfo($event)"  />
-
+<form [formGroup]="validarpadre" >
+    <input type="text" placeholder="escriba" formControlName="name">
+    <div [hidden]="validarpadre.get('name')?.valid" >
+        <p>es obligatorio escribir el nombre</p>
+    </div>
+  
+    {{recibis.value}}
+</form>
+<app-hijo [validarpadre]="validarpadre.get('name')?.value" (validarhijo)="recibir($event)"/>
 
 <router-outlet />
